@@ -1,0 +1,37 @@
+﻿<Window x:Class="AccountingComputerEquipment.Client.Views.AdminWindows.ViewRequestsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AccountingComputerEquipment.Client.Views.AdminWindows"
+        mc:Ignorable="d"
+        Name="requestsWindow"
+        Title="Просмотр запросов от сотрудников" MinHeight="450" MinWidth="800" FontSize="18" WindowStartupLocation="CenterScreen">
+    
+    <Grid Background="#F5F5F5">
+        <Grid Background="White" Margin="25,20,25,15">
+            <TextBox Name="FilterTextBox" TextChanged="FilterTextBox_TextChanged" Height="30" Width="200" Margin="25"
+                    VerticalAlignment="Top"  HorizontalAlignment="left" BorderThickness="1" BorderBrush="#E0E0E0" />
+            
+            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Orientation="Horizontal" Margin="25,18">
+                <Button Height="40" CommandParameter="{x:Reference Name = requestsWindow}" Command="{Binding ShowRequestWindowCommand}"  
+                    Content=" Учет орг.техники" Width="Auto" VerticalContentAlignment="Center" Padding="15,0,15,0"
+                    BorderThickness="1" BorderBrush="#E0E0E0" Margin="0 0 5 0"/>
+                <Button Height="40" CommandParameter="{x:Reference Name = requestsWindow}" Command="{Binding ShowRequestWindowCommand}"  
+                        Content=" К сотрудникам" Width="Auto" VerticalContentAlignment="Center" Padding="15,0,15,0"
+                        BorderThickness="1" BorderBrush="#E0E0E0"/>
+            </StackPanel>
+
+            <ListView Name="UserList" ItemsSource="{Binding Users}" BorderBrush="#cdcdcd" Margin="25,70,25,25" Padding="0">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding Photo}" Header="Photo" Width="200"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Description}" Header="Description" Width="200"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+
+    </Grid>
+</Window>
