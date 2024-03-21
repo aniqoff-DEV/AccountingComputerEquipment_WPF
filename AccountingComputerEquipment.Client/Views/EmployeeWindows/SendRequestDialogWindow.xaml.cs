@@ -8,10 +8,10 @@ namespace AccountingComputerEquipment.Client.Views.EmployeeWindows
     /// </summary>
     public partial class SendRequestDialogWindow : Window
     {
-        public SendRequestDialogWindow()
+        public SendRequestDialogWindow(int userId)
         {
             InitializeComponent();
-            SendRequestViewModal sendRequestViewModal = new SendRequestViewModal();
+            SendRequestViewModal sendRequestViewModal = new SendRequestViewModal(userId);
             DataContext = sendRequestViewModal;
         }
     }

@@ -1,5 +1,6 @@
 ﻿using AccountingComputerEquipment.Client.Commands;
 using AccountingComputerEquipment.Client.Models;
+using AccountingComputerEquipment.Client.Services;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -7,14 +8,15 @@ namespace AccountingComputerEquipment.Client.ViewModels
 {
     public class SendRequestViewModal
     {
-        public ObservableCollection<OfficeEquipment> OfficeEquipment { get; set; }
+        public ObservableCollection<OfficeEquipment> OfficeEquipments { get; set; }
 
         public string UserDescription { get; set; }
 
         public ICommand SendMessage { get; set; }
 
-        public SendRequestViewModal()
+        public SendRequestViewModal(int userId)
         {
+            OfficeEquipments = OfficeEquipmentService.LoadCurrentOfficeEquipments(userId);
             SendMessage = new RelayCommand(ShowWindow, CanShowWindow);
         }
 

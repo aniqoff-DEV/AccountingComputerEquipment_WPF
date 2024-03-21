@@ -8,10 +8,10 @@ namespace AccountingComputerEquipment.Client.Views.EmployeeWindows
     /// </summary>
     public partial class OfficeEqupmentWindow : Window
     {
-        public OfficeEqupmentWindow()
+        public OfficeEqupmentWindow(int userId)
         {
             InitializeComponent();
-            OfficeEquipmentViewModal officeEquipmentViewModal = new OfficeEquipmentViewModal();
+            OfficeEquipmentViewModal officeEquipmentViewModal = new OfficeEquipmentViewModal(userId);
             DataContext = officeEquipmentViewModal;
         }
     }

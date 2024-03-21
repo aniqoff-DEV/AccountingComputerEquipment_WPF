@@ -9,7 +9,7 @@
     
     <Grid Background="#F5F5F5">
         <Label Content="Оргтехника" Margin="25" VerticalAlignment="Top" HorizontalAlignment="left"/>
-        <ComboBox  Height="30" Width="300" Text="{Binding OfficeEquipment}" Margin="25,60"
+        <ComboBox  Height="30" Width="300" ItemsSource="{Binding OfficeEquipments}" DisplayMemberPath="Name" Margin="25,60"
                   VerticalAlignment="Top" HorizontalAlignment="left"/>
 
         <Label Content="Опишите потребность" Margin="25,90" VerticalAlignment="Top" HorizontalAlignment="left"/>

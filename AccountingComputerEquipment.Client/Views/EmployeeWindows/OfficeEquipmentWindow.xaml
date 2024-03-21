@@ -14,8 +14,8 @@
             <Button Height="40" CommandParameter="{x:Reference Name = ofWindow}" Command="{Binding ShowRequestWindowCommand}"  
                     Content=" Создать запрос" Width="Auto" VerticalContentAlignment="Center" Padding="15,0,15,0" Margin="25 20 25 0" 
                     VerticalAlignment="Top" HorizontalAlignment="Right" BorderThickness="1" BorderBrush="#E0E0E0"  />
-            
-            <ListView Name="UserList" ItemsSource="{Binding Users}" BorderBrush="#cdcdcd" Margin="25,70,25,25" Padding="0">
+
+            <ListView Name="UserList" ItemsSource="{Binding MyOfficeEquipments}" BorderBrush="#cdcdcd" Margin="25,70,25,25" Padding="0">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding Photo}" Header="Photo" Width="200"/>

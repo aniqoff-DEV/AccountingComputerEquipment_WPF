@@ -1,5 +1,6 @@
 ﻿using AccountingComputerEquipment.Client.Commands;
 using AccountingComputerEquipment.Client.Models;
+using AccountingComputerEquipment.Client.Services;
 using AccountingComputerEquipment.Client.Views.EmployeeWindows;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -9,12 +10,16 @@ namespace AccountingComputerEquipment.Client.ViewModels
 {
     public class OfficeEquipmentViewModal
     {
-        public ObservableCollection<User> Users { get; set; }
+        public ObservableCollection<OfficeEquipment> MyOfficeEquipments { get; set; }
 
         public ICommand ShowRequestWindowCommand { get; set; }
 
-        public OfficeEquipmentViewModal()
+        private int UserId { get; set; }
+
+        public OfficeEquipmentViewModal(int userId)
         {
+            MyOfficeEquipments = OfficeEquipmentService.LoadCurrentOfficeEquipments(userId);
+            UserId = userId;
             ShowRequestWindowCommand = new RelayCommand(ShowWindow, CanShowWindow);
         }
 
@@ -27,7 +32,7 @@ namespace AccountingComputerEquipment.Client.ViewModels
         {
             var mainWindow = obj as Window;
 
-            SendRequestDialogWindow sendRequestDialogWindow = new SendRequestDialogWindow();
+            SendRequestDialogWindow sendRequestDialogWindow = new SendRequestDialogWindow(UserId);
             sendRequestDialogWindow.Owner = mainWindow;
             sendRequestDialogWindow.Show();
         }

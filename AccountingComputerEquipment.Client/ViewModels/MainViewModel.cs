@@ -43,7 +43,7 @@ namespace AccountingComputerEquipment.Client.ViewModels
 
             if (user.AccessLevelId > 1)
             {
-                OfficeEqupmentWindow equpmentWindow = new();
+                OfficeEqupmentWindow equpmentWindow = new(user.Id);
                 equpmentWindow.Show();
                 mainWindow.Close();
             }
