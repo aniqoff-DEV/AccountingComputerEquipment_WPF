@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using AccountingComputerEquipment.Client.ViewModels.AdminViewModels;
+using System.Windows;
 
 namespace AccountingComputerEquipment.Client.Views.AdminWindows
 {
@@ -11,6 +12,8 @@ namespace AccountingComputerEquipment.Client.Views.AdminWindows
         public ViewRequestsWindow()
         {
             InitializeComponent();
+            RequestsViewModel requestsViewModel = new RequestsViewModel();
+            DataContext = requestsViewModel;
         }
     }
 }

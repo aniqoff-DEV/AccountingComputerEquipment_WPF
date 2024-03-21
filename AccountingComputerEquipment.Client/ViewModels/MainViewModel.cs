@@ -1,6 +1,4 @@
-﻿
-using AccountingComputerEquipment.Client.Commands;
-using AccountingComputerEquipment.Client.Data;
+﻿using AccountingComputerEquipment.Client.Commands;
 using AccountingComputerEquipment.Client.Services;
 using AccountingComputerEquipment.Client.Views.AdminWindows;
 using AccountingComputerEquipment.Client.Views.EmployeeWindows;
@@ -26,13 +24,35 @@ namespace AccountingComputerEquipment.Client.ViewModels
             return true;
         }
 
-        private async void ShowWindow(object obj)
+        private void ShowWindow(object obj)
         {
+            IsVerificationUser(obj);
+        }
+
+        private void IsVerificationUser(object obj)
+        {
+            var user = UserService.GetUserByEmailAndPassword(Email, Password);
+
+            if (user is null)
+            {
+                MessageBox.Show("Email или пароль введены неверно");
+                return;
+            }
+
             var mainWindow = obj as Window;
-            
-            OfficeEqupmentWindow equpmentWindow = new();
-            equpmentWindow.Show();
-            mainWindow.Close();  
+
+            if (user.AccessLevelId > 1)
+            {
+                OfficeEqupmentWindow equpmentWindow = new();
+                equpmentWindow.Show();
+                mainWindow.Close();
+            }
+            else
+            {
+                ViewRequestsWindow requestsWindow = new();
+                requestsWindow.Show();
+                mainWindow.Close();
+            }
         }
     }
 }

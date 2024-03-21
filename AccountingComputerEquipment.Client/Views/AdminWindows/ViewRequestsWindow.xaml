@@ -10,14 +10,14 @@
     
     <Grid Background="#F5F5F5">
         <Grid Background="White" Margin="25,20,25,15">
-            <TextBox Name="FilterTextBox" TextChanged="FilterTextBox_TextChanged" Height="30" Width="200" Margin="25"
+            <TextBox Name="FilterTextBox" Height="30" Width="200" Margin="25"
                     VerticalAlignment="Top"  HorizontalAlignment="left" BorderThickness="1" BorderBrush="#E0E0E0" />
             
             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Orientation="Horizontal" Margin="25,18">
-                <Button Height="40" CommandParameter="{x:Reference Name = requestsWindow}" Command="{Binding ShowRequestWindowCommand}"  
+                <Button Height="40" CommandParameter="{x:Reference Name = requestsWindow}" Command="{Binding ShowEmployeesWindowCommand}"  
                     Content=" Учет орг.техники" Width="Auto" VerticalContentAlignment="Center" Padding="15,0,15,0"
                     BorderThickness="1" BorderBrush="#E0E0E0" Margin="0 0 5 0"/>
-                <Button Height="40" CommandParameter="{x:Reference Name = requestsWindow}" Command="{Binding ShowRequestWindowCommand}"  
+                <Button Height="40" CommandParameter="{x:Reference Name = requestsWindow}" Command="{Binding ShowAccoutingOEWindowCommand}"  
                         Content=" К сотрудникам" Width="Auto" VerticalContentAlignment="Center" Padding="15,0,15,0"
                         BorderThickness="1" BorderBrush="#E0E0E0"/>
             </StackPanel>

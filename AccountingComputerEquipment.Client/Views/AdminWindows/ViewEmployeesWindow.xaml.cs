@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using AccountingComputerEquipment.Client.Models;
+using AccountingComputerEquipment.Client.Services;
+using AccountingComputerEquipment.Client.ViewModels.AdminViewModels;
+using System.Windows;
 
 namespace AccountingComputerEquipment.Client.Views.AdminWindows
 {
@@ -12,11 +15,20 @@ namespace AccountingComputerEquipment.Client.Views.AdminWindows
         public ViewEmployeesWindow()
         {
             InitializeComponent();
+            ViewEmployeesViewModel employeesViewModel = new();
+            DataContext = employeesViewModel;
         }
 
         private void FilterTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
+            UserList.Items.Filter = FilterMethod;
+        }
 
+        private bool FilterMethod(object obj)
+        {
+            var user = (User)obj;
+
+            return user.FullName.Contains(FilterTextBox.Text, StringComparison.OrdinalIgnoreCase);
         }
     }
 }

@@ -7,9 +7,9 @@ namespace AccountingComputerEquipment.Client.Views.AdminWindows
     /// Это модальное окно должно открываться при взаимодействии как у окна сотрудников, так и у запросов
     /// универсальное для двух пон пон
     /// </summary>
-    public partial class AddOfficeEqupmentOnUserDialogWindow : Window
+    public partial class AddOfficeEqupmentOnUserWindow : Window
     {
-        public AddOfficeEqupmentOnUserDialogWindow()
+        public AddOfficeEqupmentOnUserWindow()
         {
             InitializeComponent();
         }

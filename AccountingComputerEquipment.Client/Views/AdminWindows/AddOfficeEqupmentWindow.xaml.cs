@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace AccountingComputerEquipment.Client.Views.AdminWindows
 {
     /// <summary>
-    /// Логика взаимодействия для AccoutingOfficeEquipment.xaml
+    /// Логика взаимодействия для AddOfficeEqupmentWindow.xaml
     /// </summary>
-    public partial class AccoutingOfficeEquipment : Window
+    public partial class AddOfficeEqupmentWindow : Page
     {
-        public AccoutingOfficeEquipment()
+        public AddOfficeEqupmentWindow()
         {
             InitializeComponent();
         }
