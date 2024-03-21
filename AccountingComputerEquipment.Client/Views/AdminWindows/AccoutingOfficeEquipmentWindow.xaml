@@ -6,14 +6,14 @@
         xmlns:local="clr-namespace:AccountingComputerEquipment.Client.Views.AdminWindows"
         mc:Ignorable="d"
         Name="accoutingWindow"
-        Title="Учет оргтехники" Height="450" Width="800" FontSize="18" WindowStartupLocation="CenterScreen">
+        Title="Учет оргтехники" MinHeight="450" MinWidth="800" FontSize="18" WindowStartupLocation="CenterScreen">
     
     <Grid Background="#F5F5F5">
         <Grid Background="White" Margin="25,20,25,15">
-            <TextBox Name="FilterTextBox" Height="30" Width="200" Margin="25"
+            <TextBox Name="FilterTextBox" Height="30" Width="200" Margin="25" TextChanged="FilterTextBox_TextChanged"
                  VerticalAlignment="Top"  HorizontalAlignment="left" BorderThickness="1" BorderBrush="#E0E0E0" />
-            
-            <Button Height="40" Command="{Binding ShowCreateEquipmentWindowCommand}"  
+
+            <Button Height="40" CommandParameter="{x:Reference Name = accoutingWindow}" Command="{Binding ShowCreateEquipmentWindowCommand}"
                     Content="Добавить оргетхнику" Width="Auto" VerticalContentAlignment="Center" Padding="15,0,15,0" Margin="25 20 155 0" 
                     VerticalAlignment="Top" HorizontalAlignment="Right" BorderThickness="1" BorderBrush="#E0E0E0"  />
 
@@ -21,13 +21,13 @@
                 Content="Вернуться" Width="Auto" VerticalContentAlignment="Center" Padding="15,0,15,0" Margin="25 20 25 0" 
                 VerticalAlignment="Top" HorizontalAlignment="Right" BorderThickness="1" BorderBrush="#E0E0E0"  />
 
-            <ListView Name="UserList" ItemsSource="{Binding OfficeEquipments}" BorderBrush="#cdcdcd" Margin="25,70,25,25" Padding="0">
+            <ListView Name="OfficeEquipmentList" ItemsSource="{Binding OfficeEquipments}" BorderBrush="#cdcdcd" Margin="25,70,25,25" Padding="0">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding Photo}" Header="Фото"/>
                         <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Название"/>
                         <GridViewColumn DisplayMemberBinding="{Binding Cost}" Header="Цена"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Description}" Header="Описание"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Description}" Header="Описание" Width="200"/>
                         <GridViewColumn DisplayMemberBinding="{Binding AccessLevelId}" Header="Уровень доступа"/>
                     </GridView>
                 </ListView.View>

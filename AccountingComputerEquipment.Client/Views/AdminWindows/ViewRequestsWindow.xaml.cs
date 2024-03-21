@@ -15,5 +15,18 @@ namespace AccountingComputerEquipment.Client.Views.AdminWindows
             RequestsViewModel requestsViewModel = new RequestsViewModel();
             DataContext = requestsViewModel;
         }
+
+        private void FilterTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            RequestList.Items.Filter = FilterMethod;
+        }
+
+        private bool FilterMethod(object obj)
+        {
+            //var user = (User)obj;
+
+            //return user.FullName.Contains(FilterTextBox.Text, StringComparison.OrdinalIgnoreCase);
+            return true;
+        }
     }
 }

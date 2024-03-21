@@ -1,5 +1,4 @@
 ﻿using AccountingComputerEquipment.Client.Models;
-using AccountingComputerEquipment.Client.Services;
 using AccountingComputerEquipment.Client.ViewModels.AdminViewModels;
 using System.Windows;
 

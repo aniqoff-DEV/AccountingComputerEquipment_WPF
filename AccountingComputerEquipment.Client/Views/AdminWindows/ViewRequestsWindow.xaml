@@ -10,19 +10,19 @@
     
     <Grid Background="#F5F5F5">
         <Grid Background="White" Margin="25,20,25,15">
-            <TextBox Name="FilterTextBox" Height="30" Width="200" Margin="25"
+            <TextBox Name="FilterTextBox" Height="30" Width="200" Margin="25" TextChanged="FilterTextBox_TextChanged"
                     VerticalAlignment="Top"  HorizontalAlignment="left" BorderThickness="1" BorderBrush="#E0E0E0" />
             
             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Orientation="Horizontal" Margin="25,18">
-                <Button Height="40" CommandParameter="{x:Reference Name = requestsWindow}" Command="{Binding ShowEmployeesWindowCommand}"  
+                <Button Height="40" CommandParameter="{x:Reference Name = requestsWindow}" Command="{Binding ShowAccoutingOEWindowCommand}"  
                     Content=" Учет орг.техники" Width="Auto" VerticalContentAlignment="Center" Padding="15,0,15,0"
                     BorderThickness="1" BorderBrush="#E0E0E0" Margin="0 0 5 0"/>
-                <Button Height="40" CommandParameter="{x:Reference Name = requestsWindow}" Command="{Binding ShowAccoutingOEWindowCommand}"  
+                <Button Height="40" CommandParameter="{x:Reference Name = requestsWindow}" Command="{Binding ShowEmployeesWindowCommand}"  
                         Content=" К сотрудникам" Width="Auto" VerticalContentAlignment="Center" Padding="15,0,15,0"
                         BorderThickness="1" BorderBrush="#E0E0E0"/>
             </StackPanel>
 
-            <ListView Name="UserList" ItemsSource="{Binding Users}" BorderBrush="#cdcdcd" Margin="25,70,25,25" Padding="0">
+            <ListView Name="RequestList" ItemsSource="{Binding Users}" BorderBrush="#cdcdcd" Margin="25,70,25,25" Padding="0">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding Photo}" Header="Photo" Width="200"/>

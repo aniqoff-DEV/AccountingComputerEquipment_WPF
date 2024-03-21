@@ -34,6 +34,28 @@ namespace AccountingComputerEquipment.Client.Services
             }
         }
 
+        public static void CreateOfficeEquipment(OfficeEquipment officeEquipment)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Execute("INSERT INTO OfficeEquipment (Name, Photo, Cost, Description, AccessLevelId)" +
+                            " VALUES (@Name, @Photo, @Cost, @Description, @AccessLevelId)",
+                            officeEquipment);
+            }
+        }
+
+        public static OfficeEquipment? GetOfficeEquipmentById(int officeEquipmentId)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var output = cnn.Query<OfficeEquipment>("select * from OfficeEquipment where Id = @officeEquipmentId"
+                    , new { officeEquipmentId })
+                    .FirstOrDefault();
+
+                return output;
+            }
+        }
+
         private static string LoadConnectionString(string id = "Default")
         {
             return ConfigurationManager.ConnectionStrings[id].ConnectionString;
