@@ -22,12 +22,30 @@
                         BorderThickness="1" BorderBrush="#E0E0E0"/>
             </StackPanel>
 
-            <ListView Name="RequestList" ItemsSource="{Binding Users}" BorderBrush="#cdcdcd" Margin="25,70,25,25" Padding="0">
+            <ListView Name="RequestList" ItemsSource="{Binding Requests}" BorderBrush="#cdcdcd" Margin="25,70,25,25" Padding="0">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn DisplayMemberBinding="{Binding Photo}" Header="Photo" Width="200"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Description}" Header="Description" Width="200"/>
+                        <GridViewColumn Header="Фото техники">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding OfficeEquipmentPhoto}" Width="100" Height="100"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding OfficeEquipmentName}" Header="Название техники"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding UserFullName}" Header="Имя работника"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding UserJobTitle}" Header="Должность"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding UserEmail}" Header="Почта"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding UserTelephoneNumber}" Header="Телефон"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding UserAccessLevelId}" Header="Уровень доступа"/>
+                        <GridViewColumn Header="Действие">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Обработать заявку"  Width="Auto" VerticalContentAlignment="Center" Padding="15,0,15,0"
+                                            CommandParameter="{x:Reference Name = requestsWindow}"  Command="{Binding ShowAddOEonUserWindowCommand}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>

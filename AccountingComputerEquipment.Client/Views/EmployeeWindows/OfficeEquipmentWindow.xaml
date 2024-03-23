@@ -18,9 +18,15 @@
             <ListView Name="UserList" ItemsSource="{Binding MyOfficeEquipments}" BorderBrush="#cdcdcd" Margin="25,70,25,25" Padding="0">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn DisplayMemberBinding="{Binding Photo}" Header="Photo" Width="200"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Description}" Header="Description" Width="200"/>
+                        <GridViewColumn Header="Фото">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding Photo}" Width="100" Height="100"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Название"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Description}" Header="Описание" Width="200"/>
                     </GridView>
                 </ListView.View>
             </ListView>

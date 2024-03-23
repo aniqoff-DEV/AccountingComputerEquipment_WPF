@@ -24,7 +24,13 @@
             <ListView Name="OfficeEquipmentList" ItemsSource="{Binding OfficeEquipments}" BorderBrush="#cdcdcd" Margin="25,70,25,25" Padding="0">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn DisplayMemberBinding="{Binding Photo}" Header="Фото"/>
+                        <GridViewColumn Header="Фото">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding Photo}" Width="100" Height="100"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                         <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Название"/>
                         <GridViewColumn DisplayMemberBinding="{Binding Cost}" Header="Цена"/>
                         <GridViewColumn DisplayMemberBinding="{Binding Description}" Header="Описание" Width="200"/>

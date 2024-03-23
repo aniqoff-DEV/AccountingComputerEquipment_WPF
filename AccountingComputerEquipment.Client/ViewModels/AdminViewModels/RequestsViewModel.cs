@@ -1,16 +1,19 @@
 ﻿using AccountingComputerEquipment.Client.Commands;
 using AccountingComputerEquipment.Client.Models;
 using AccountingComputerEquipment.Client.Views.AdminWindows;
-using AccountingComputerEquipment.Client.Views;
-using System.Windows.Input;
+using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Input;
 
 namespace AccountingComputerEquipment.Client.ViewModels.AdminViewModels
 {
     public class RequestsViewModel
     {
+        public ObservableCollection<RequestModel> Requests { get; set; }
+
         public ICommand ShowEmployeesWindowCommand { get; set; }
         public ICommand ShowAccoutingOEWindowCommand { get; set; }
+        public ICommand ShowAddOEonUserWindowCommand { get; set; } // todo
 
         public RequestsViewModel()
         {

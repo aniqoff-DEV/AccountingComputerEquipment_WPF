@@ -25,6 +25,14 @@
                         <GridViewColumn DisplayMemberBinding="{Binding Email}" Header="Почта"/>
                         <GridViewColumn DisplayMemberBinding="{Binding TelephoneNumber}" Header="Телефон"/>
                         <GridViewColumn DisplayMemberBinding="{Binding ListOfficeEquipment}" Header="Оборудование"/>
+                        <GridViewColumn Header="Действие">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Привязать оргтехники"  Width="Auto" VerticalContentAlignment="Center" Padding="15,0,15,0" Margin="10" Height="40"
+                                            CommandParameter="{x:Reference Name = employessWindow}" Command="{Binding RelativeSource={RelativeSource AncestorType ={x:Type ListView}}, Path=DataContext.ShowAddOEonUserWindowCommand}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>

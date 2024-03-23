@@ -5,8 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AccountingComputerEquipment.Client.Views.AdminWindows"
         mc:Ignorable="d"
-        Title="AddOfficeEqupmentOnUserDialogWindow" Height="450" Width="800">
-    <Grid>
+        Title="Запись техники сотруднику" Height="480" Width="600" FontSize="18" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    
+    <StackPanel Background="#F5F5F5" Orientation="Vertical">
+        <Label Margin="25" HorizontalAlignment="Center" FontWeight="Bold">Форма запроса на привязку оргтехники</Label>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="520">
+            <ComboBox HorizontalAlignment="Left" Margin="0 10 25 10" Width="250" BorderThickness="2"/>
+            <Image HorizontalAlignment="Right" Width="50" Height="50"></Image>
+        </StackPanel>
         
-    </Grid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label FontWeight="Bold" Margin="15 0 10 0" Width="250">Оргтехника:</Label>
+            <Label FontWeight="Bold" Margin="15 0 10 0" Width="250">Сотрудник:</Label>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Height="200" HorizontalAlignment="Center">
+            <TextBox HorizontalAlignment="Left" Padding="5" Height="170" Width="250" Margin="10 0 10 0" x:Name="textBoxOE"
+                     BorderThickness="3" BorderBrush="Black"  IsEnabled="False"></TextBox>
+            <TextBox HorizontalAlignment="Right" Padding="5" Height="170" Width="250" Margin="10 0 10 0" x:Name="textBoxUser"
+                     BorderThickness="3" BorderBrush="Black" IsEnabled="False"></TextBox>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Height="70" HorizontalAlignment="Center">
+            <Button HorizontalAlignment="Left" Padding="10" Height="50" Width="150" Margin="10 0 10 0">Отклонить</Button>
+            <Button HorizontalAlignment="Right" Padding="10" Height="50" Width="150" Margin="10 0 10 0">Создать</Button>
+        </StackPanel>
+    </StackPanel>
 </Window>
