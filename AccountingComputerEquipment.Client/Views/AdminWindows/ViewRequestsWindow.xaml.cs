@@ -1,4 +1,5 @@
-﻿using AccountingComputerEquipment.Client.ViewModels.AdminViewModels;
+﻿using AccountingComputerEquipment.Client.Models;
+using AccountingComputerEquipment.Client.ViewModels.AdminViewModels;
 using System.Windows;
 
 namespace AccountingComputerEquipment.Client.Views.AdminWindows
@@ -23,10 +24,9 @@ namespace AccountingComputerEquipment.Client.Views.AdminWindows
 
         private bool FilterMethod(object obj)
         {
-            //var user = (User)obj;
+            var request = (RequestModel)obj;
 
-            //return user.FullName.Contains(FilterTextBox.Text, StringComparison.OrdinalIgnoreCase);
-            return true;
+            return request.Description.Contains(FilterTextBox.Text, StringComparison.OrdinalIgnoreCase);
         }
     }
 }

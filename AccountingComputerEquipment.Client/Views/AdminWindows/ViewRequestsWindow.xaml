@@ -25,6 +25,7 @@
             <ListView Name="RequestList" ItemsSource="{Binding Requests}" BorderBrush="#cdcdcd" Margin="25,70,25,25" Padding="0">
                 <ListView.View>
                     <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding Description}" Header="Описание проблемы"/>
                         <GridViewColumn Header="Фото техники">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
@@ -37,12 +38,12 @@
                         <GridViewColumn DisplayMemberBinding="{Binding UserJobTitle}" Header="Должность"/>
                         <GridViewColumn DisplayMemberBinding="{Binding UserEmail}" Header="Почта"/>
                         <GridViewColumn DisplayMemberBinding="{Binding UserTelephoneNumber}" Header="Телефон"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding UserAccessLevelId}" Header="Уровень доступа"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding UserAccessLevel}" Header="Уровень доступа"/>
                         <GridViewColumn Header="Действие">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button Content="Обработать заявку"  Width="Auto" VerticalContentAlignment="Center" Padding="15,0,15,0"
-                                            CommandParameter="{x:Reference Name = requestsWindow}"  Command="{Binding ShowAddOEonUserWindowCommand}"/>
+                                            CommandParameter="{x:Reference Name = requestsWindow}" Command="{Binding RelativeSource={RelativeSource AncestorType ={x:Type ListView}}, Path=DataContext.ShowAddOEonUserWindowCommand}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

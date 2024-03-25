@@ -1,5 +1,6 @@
 ﻿using AccountingComputerEquipment.Client.Commands;
 using AccountingComputerEquipment.Client.Models;
+using AccountingComputerEquipment.Client.Services;
 using AccountingComputerEquipment.Client.Views.AdminWindows;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -17,13 +18,23 @@ namespace AccountingComputerEquipment.Client.ViewModels.AdminViewModels
 
         public RequestsViewModel()
         {
+            Requests = RequestService.LoadRequestModels();
             ShowEmployeesWindowCommand = new RelayCommand(ShowEmployeesWindow, CanShowWindow);
             ShowAccoutingOEWindowCommand = new RelayCommand(ShowAccoutingWindow, CanShowWindow);
+            ShowAddOEonUserWindowCommand = new RelayCommand(ShowAddOEonUserWindow, CanShowWindow);
         }
 
         private bool CanShowWindow(object obj)
         {
             return true;
+        }
+        private void ShowAddOEonUserWindow(object obj)
+        {
+            var employessWindow = obj as Window;
+
+            AddOfficeEqupmentOnUserWindow addOEonUserWindow = new();
+            addOEonUserWindow.Owner = employessWindow;
+            addOEonUserWindow.Show();
         }
 
         private void ShowEmployeesWindow(object obj)

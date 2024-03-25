@@ -24,7 +24,7 @@
             <TextBox HorizontalAlignment="Left" Padding="5" Height="170" Width="250" Margin="10 0 10 0" x:Name="textBoxOE"
                      BorderThickness="3" BorderBrush="Black"  IsEnabled="False"></TextBox>
             <TextBox HorizontalAlignment="Right" Padding="5" Height="170" Width="250" Margin="10 0 10 0" x:Name="textBoxUser"
-                     BorderThickness="3" BorderBrush="Black" IsEnabled="False"></TextBox>
+                     BorderThickness="3" BorderBrush="Green" IsEnabled="False"></TextBox>
         </StackPanel>
         
         <StackPanel Orientation="Horizontal" Height="70" HorizontalAlignment="Center">
