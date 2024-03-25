@@ -10,16 +10,19 @@
     
     <Grid Background="#F5F5F5">
         <Grid Background="White" Margin="25,20,25,15">
-            <TextBox Name="FilterTextBox" Height="30" Width="200" Margin="25" TextChanged="FilterTextBox_TextChanged"
+            <TextBox Name="FilterTextBox" Height="30" Width="350" Margin="25" TextChanged="FilterTextBox_TextChanged"
                     VerticalAlignment="Top"  HorizontalAlignment="left" BorderThickness="1" BorderBrush="#E0E0E0" />
             
             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Orientation="Horizontal" Margin="25,18">
+                <Button Height="40" CommandParameter="{x:Reference Name = requestsWindow}" Command="{Binding ExitCommand}"  
+                        Content="Выйти" Width="Auto" VerticalContentAlignment="Center" Padding="15,0,15,0" Foreground="Firebrick" FontWeight="Bold"
+                        BorderThickness="1" BorderBrush="#E0E0E0" Margin="0 0 25 0"/>
                 <Button Height="40" CommandParameter="{x:Reference Name = requestsWindow}" Command="{Binding ShowAccoutingOEWindowCommand}"  
                     Content=" Учет орг.техники" Width="Auto" VerticalContentAlignment="Center" Padding="15,0,15,0"
-                    BorderThickness="1" BorderBrush="#E0E0E0" Margin="0 0 5 0"/>
+                    BorderThickness="1" BorderBrush="#E0E0E0" Margin="0 0 5 0" Foreground="WhiteSmoke"/>
                 <Button Height="40" CommandParameter="{x:Reference Name = requestsWindow}" Command="{Binding ShowEmployeesWindowCommand}"  
                         Content=" К сотрудникам" Width="Auto" VerticalContentAlignment="Center" Padding="15,0,15,0"
-                        BorderThickness="1" BorderBrush="#E0E0E0"/>
+                        BorderThickness="1" BorderBrush="#E0E0E0" Foreground="GreenYellow"/>
             </StackPanel>
 
             <ListView Name="RequestList" ItemsSource="{Binding Requests}" BorderBrush="#cdcdcd" Margin="25,70,25,25" Padding="0">
@@ -42,7 +45,7 @@
                         <GridViewColumn Header="Действие">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Content="Обработать заявку"  Width="Auto" VerticalContentAlignment="Center" Padding="15,0,15,0"
+                                    <Button Content="Обработать заявку"  Width="Auto" VerticalContentAlignment="Center" Padding="15,0,15,0" Height="50"
                                             CommandParameter="{x:Reference Name = requestsWindow}" Command="{Binding RelativeSource={RelativeSource AncestorType ={x:Type ListView}}, Path=DataContext.ShowAddOEonUserWindowCommand}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>

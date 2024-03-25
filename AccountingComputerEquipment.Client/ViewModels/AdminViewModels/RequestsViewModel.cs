@@ -1,6 +1,7 @@
 ﻿using AccountingComputerEquipment.Client.Commands;
 using AccountingComputerEquipment.Client.Models;
 using AccountingComputerEquipment.Client.Services;
+using AccountingComputerEquipment.Client.Views;
 using AccountingComputerEquipment.Client.Views.AdminWindows;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -14,7 +15,8 @@ namespace AccountingComputerEquipment.Client.ViewModels.AdminViewModels
 
         public ICommand ShowEmployeesWindowCommand { get; set; }
         public ICommand ShowAccoutingOEWindowCommand { get; set; }
-        public ICommand ShowAddOEonUserWindowCommand { get; set; } // todo
+        public ICommand ExitCommand { get; set; }
+        public ICommand ShowAddOEonUserWindowCommand { get; set; }
 
         public RequestsViewModel()
         {
@@ -22,12 +24,23 @@ namespace AccountingComputerEquipment.Client.ViewModels.AdminViewModels
             ShowEmployeesWindowCommand = new RelayCommand(ShowEmployeesWindow, CanShowWindow);
             ShowAccoutingOEWindowCommand = new RelayCommand(ShowAccoutingWindow, CanShowWindow);
             ShowAddOEonUserWindowCommand = new RelayCommand(ShowAddOEonUserWindow, CanShowWindow);
+            ExitCommand = new RelayCommand(ExitOnWindow, CanShowWindow);
         }
 
         private bool CanShowWindow(object obj)
         {
             return true;
         }
+
+        private void ExitOnWindow(object obj)
+        {
+            var requestsWindow = obj as Window;
+
+            MainWindow mainWindow = new MainWindow();
+            requestsWindow.Close();
+            mainWindow.Show();
+        }
+
         private void ShowAddOEonUserWindow(object obj)
         {
             var employessWindow = obj as Window;

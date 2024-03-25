@@ -1,5 +1,4 @@
-﻿using AccountingComputerEquipment.Client.Data;
-using AccountingComputerEquipment.Client.ViewModels;
+﻿using AccountingComputerEquipment.Client.ViewModels;
 using System.Windows;
 
 namespace AccountingComputerEquipment.Client.Views

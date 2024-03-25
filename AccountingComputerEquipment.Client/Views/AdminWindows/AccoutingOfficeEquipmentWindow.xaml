@@ -15,7 +15,7 @@
 
             <Button Height="40" CommandParameter="{x:Reference Name = accoutingWindow}" Command="{Binding ShowCreateEquipmentWindowCommand}"
                     Content="Добавить оргетхнику" Width="Auto" VerticalContentAlignment="Center" Padding="15,0,15,0" Margin="25 20 155 0" 
-                    VerticalAlignment="Top" HorizontalAlignment="Right" BorderThickness="1" BorderBrush="#E0E0E0"  />
+                    VerticalAlignment="Top" HorizontalAlignment="Right" BorderThickness="1" BorderBrush="#E0E0E0" Foreground="WhiteSmoke"/>
 
             <Button Height="40" CommandParameter="{x:Reference Name = accoutingWindow}" Command="{Binding ShowRequestWindowCommand}"  
                 Content="Вернуться" Width="Auto" VerticalContentAlignment="Center" Padding="15,0,15,0" Margin="25 20 25 0" 

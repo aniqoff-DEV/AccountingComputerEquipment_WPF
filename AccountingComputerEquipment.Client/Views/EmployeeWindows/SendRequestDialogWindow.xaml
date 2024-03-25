@@ -5,19 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AccountingComputerEquipment.Client.Views.EmployeeWindows"
         mc:Ignorable="d"
+        Name="sendRequestWindow"
         Title="Запрос администратору" Height="400" Width="400" ResizeMode="NoResize" FontSize="18" WindowStartupLocation="CenterOwner">
     
     <Grid Background="#F5F5F5">
         <Label Content="Оргтехника" Margin="25" VerticalAlignment="Top" HorizontalAlignment="left"/>
         <ComboBox  Height="30" Width="300" ItemsSource="{Binding OfficeEquipments}" DisplayMemberPath="Name" Margin="25,60"
-                  VerticalAlignment="Top" HorizontalAlignment="left"/>
+                  VerticalAlignment="Top" HorizontalAlignment="left" SelectedItem="{Binding SelectedOfficeEquipment}"/>
 
-        <Label Content="Опишите потребность" Margin="25,90" VerticalAlignment="Top" HorizontalAlignment="left"/>
+        <Label Content="Опишите проблему" Margin="25,90" VerticalAlignment="Top" HorizontalAlignment="left"/>
         <TextBox  Height="30" Text="{Binding Description}" Width="300" Margin="25,125"
                   VerticalAlignment="Top" HorizontalAlignment="left" BorderThickness="1" BorderBrush="#E0E0E0" />
 
         <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Margin="10">
-            <Button Height="40" Command="{Binding SendMessage}" Content=" Отправить"
+            <Button Height="40" Command="{Binding SendMessage}" CommandParameter="{x:Reference Name = sendRequestWindow}" Content=" Отправить"
          VerticalContentAlignment="Center" Padding="15,0,15,0" Margin="12" BorderThickness="1" BorderBrush="#E0E0E0" />
         </StackPanel>
        

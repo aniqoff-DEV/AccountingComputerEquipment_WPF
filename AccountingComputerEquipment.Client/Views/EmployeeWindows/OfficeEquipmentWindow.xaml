@@ -13,7 +13,11 @@
 
             <Button Height="40" CommandParameter="{x:Reference Name = ofWindow}" Command="{Binding ShowRequestWindowCommand}"  
                     Content=" Создать запрос" Width="Auto" VerticalContentAlignment="Center" Padding="15,0,15,0" Margin="25 20 25 0" 
-                    VerticalAlignment="Top" HorizontalAlignment="Right" BorderThickness="1" BorderBrush="#E0E0E0"  />
+                    VerticalAlignment="Top" HorizontalAlignment="Right" BorderThickness="1" BorderBrush="#E0E0E0" Foreground="GreenYellow"/>
+
+            <Button Height="40" CommandParameter="{x:Reference Name = ofWindow}" Command="{Binding ExitCommand}"
+                    Content="Выйти" Width="Auto" VerticalContentAlignment="Center" Padding="15,0,15,0" Margin="27 20 25 0" 
+                    VerticalAlignment="Top" HorizontalAlignment="Left" BorderThickness="1" BorderBrush="#E0E0E0" Foreground="Firebrick" FontWeight="Bold"/>
 
             <ListView Name="UserList" ItemsSource="{Binding MyOfficeEquipments}" BorderBrush="#cdcdcd" Margin="25,70,25,25" Padding="0">
                 <ListView.View>

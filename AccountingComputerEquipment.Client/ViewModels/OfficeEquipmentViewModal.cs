@@ -1,6 +1,7 @@
 ﻿using AccountingComputerEquipment.Client.Commands;
 using AccountingComputerEquipment.Client.Models;
 using AccountingComputerEquipment.Client.Services;
+using AccountingComputerEquipment.Client.Views;
 using AccountingComputerEquipment.Client.Views.EmployeeWindows;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -13,6 +14,7 @@ namespace AccountingComputerEquipment.Client.ViewModels
         public ObservableCollection<OfficeEquipment> MyOfficeEquipments { get; set; }
 
         public ICommand ShowRequestWindowCommand { get; set; }
+        public ICommand ExitCommand { get; set; }
 
         private int UserId { get; set; }
 
@@ -21,6 +23,7 @@ namespace AccountingComputerEquipment.Client.ViewModels
             MyOfficeEquipments = OfficeEquipmentService.LoadCurrentOfficeEquipments(userId);
             UserId = userId;
             ShowRequestWindowCommand = new RelayCommand(ShowWindow, CanShowWindow);
+            ExitCommand = new RelayCommand(ExitWindow, CanShowWindow);
         }
 
         private bool CanShowWindow(object obj)
@@ -28,13 +31,22 @@ namespace AccountingComputerEquipment.Client.ViewModels
             return true;
         }
 
-        private async void ShowWindow(object obj)
+        private void ShowWindow(object obj)
         {
             var mainWindow = obj as Window;
 
             SendRequestDialogWindow sendRequestDialogWindow = new SendRequestDialogWindow(UserId);
             sendRequestDialogWindow.Owner = mainWindow;
             sendRequestDialogWindow.Show();
+        }
+
+        private void ExitWindow(object obj)
+        {
+            var oeWindow = obj as Window;
+
+            MainWindow mainWindow = new MainWindow();
+            oeWindow.Close();
+            mainWindow.Show();
         }
     }
 }
