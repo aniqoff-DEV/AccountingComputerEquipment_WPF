@@ -18,6 +18,7 @@ namespace AccountingComputerEquipment.Client.ViewModels.AdminViewModels
         public ICommand ShowAccoutingOEWindowCommand { get; set; }
         public ICommand ExitCommand { get; set; }
         public ICommand ShowAddOEonUserWindowCommand { get; set; }
+        public ICommand DeleteRequestCommand { get; set; }
 
         public RequestsViewModel()
         {
@@ -26,11 +27,32 @@ namespace AccountingComputerEquipment.Client.ViewModels.AdminViewModels
             ShowAccoutingOEWindowCommand = new RelayCommand(ShowAccoutingWindow, CanShowWindow);
             ShowAddOEonUserWindowCommand = new RelayCommand(ShowAddOEonUserWindow, CanShowWindow);
             ExitCommand = new RelayCommand(ExitOnWindow, CanShowWindow);
+            DeleteRequestCommand = new RelayCommand(DeleteRequest, CanShowWindow);
         }
 
         private bool CanShowWindow(object obj)
         {
             return true;
+        }
+
+        private void DeleteRequest(object obj)
+        {
+            if (!IsSelectedRequest())
+                return;
+
+            MessageBoxResult result = MessageBox.Show("Вы хотите удалить этот запрос?",
+                                          "Подтверждение",
+                                          MessageBoxButton.YesNo,
+                                          MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                RequestService.Delete(SelectedRequest.Id);
+                MessageBox.Show("Запрос убран. Перезапустите окно чтобы обновилась информация!",
+                    "Успех", 
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information);
+            }
         }
 
         private void ExitOnWindow(object obj)
@@ -46,11 +68,8 @@ namespace AccountingComputerEquipment.Client.ViewModels.AdminViewModels
         {
             var employessWindow = obj as Window;
 
-            if(SelectedRequest is null)
-            {
-                MessageBox.Show("Выберите запрос!");
+            if(!IsSelectedRequest()) 
                 return;
-            }
 
             var currentUser = UserService.GetUserById(SelectedRequest.UserId);
             var currentOfficeEquipment = OfficeEquipmentService.GetOfficeEquipmentById(SelectedRequest.OfficeEquipmentId);
@@ -76,6 +95,16 @@ namespace AccountingComputerEquipment.Client.ViewModels.AdminViewModels
             AccoutingOfficeEquipmentWindow accoutingWindow = new();
             accoutingWindow.Show();
             requestsWindow.Close();
+        }
+
+        private bool IsSelectedRequest()
+        {
+            if (SelectedRequest is null)
+            {
+                MessageBox.Show("Выберите запрос!");
+                return false;
+            }
+            return true;
         }
     }
 }

@@ -45,8 +45,13 @@
                         <GridViewColumn Header="Действие">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Content="Обработать заявку"  Width="Auto" VerticalContentAlignment="Center" Padding="15,0,15,0" Height="50"
-                                            CommandParameter="{x:Reference Name = requestsWindow}" Command="{Binding RelativeSource={RelativeSource AncestorType ={x:Type ListView}}, Path=DataContext.ShowAddOEonUserWindowCommand}"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Content="Инфо"  Width="Auto" VerticalContentAlignment="Center" Padding="15,0,15,0" Height="50"
+                                                CommandParameter="{x:Reference Name = requestsWindow}"
+                                                Command="{Binding RelativeSource={RelativeSource AncestorType ={x:Type ListView}}, Path=DataContext.ShowAddOEonUserWindowCommand}"/>
+                                        <Button Content="Убрать"  Width="Auto" VerticalContentAlignment="Center" Margin="10 0 0 0" Padding="15,0,15,0" Height="50"
+                                                Command="{Binding RelativeSource={RelativeSource AncestorType ={x:Type ListView}}, Path=DataContext.DeleteRequestCommand}"/>
+                                    </StackPanel>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

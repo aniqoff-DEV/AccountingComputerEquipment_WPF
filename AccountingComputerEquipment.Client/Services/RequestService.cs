@@ -3,6 +3,7 @@ using Dapper;
 using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Data.SQLite;
 
 namespace AccountingComputerEquipment.Client.Services
@@ -34,6 +35,15 @@ namespace AccountingComputerEquipment.Client.Services
 
                 ObservableCollection<RequestModel> requestModelCollection = new ObservableCollection<RequestModel>(output as List<RequestModel>);
                 return requestModelCollection;
+            }
+        }
+
+        public static void Delete(int requestId)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var sqlQuery = "DELETE FROM Request WHERE Id = @requestId";
+                cnn.Execute(sqlQuery, new { requestId });
             }
         }
 
