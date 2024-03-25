@@ -13,8 +13,8 @@
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="520">
             <ComboBox ItemsSource="{Binding OfficeEquipments}" DisplayMemberPath="Name" HorizontalAlignment="Left"
-                      Margin="0 10 25 10" Width="250" BorderThickness="2" x:Name="officeEquipmentsBox" SelectedItem="{Binding SelectedOfficeEquipment}"/>
-            <Image Source="{Binding Photo}" HorizontalAlignment="Right" Width="50" Height="50"></Image>
+                      Margin="0 10 25 10" Width="250" BorderThickness="2" x:Name="officeEquipmentsBox" SelectionChanged="officeEquipmentsBox_SelectionChanged" SelectedItem="{Binding SelectedOfficeEquipment}"/>
+            <Image x:Name="photo" Source="{Binding Photo}" HorizontalAlignment="Right" Width="50" Height="50"></Image>
         </StackPanel>
         
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
