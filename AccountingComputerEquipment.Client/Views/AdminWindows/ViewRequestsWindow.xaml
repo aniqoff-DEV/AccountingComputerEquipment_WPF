@@ -25,7 +25,7 @@
                         BorderThickness="1" BorderBrush="#E0E0E0" Foreground="GreenYellow"/>
             </StackPanel>
 
-            <ListView Name="RequestList" ItemsSource="{Binding Requests}" BorderBrush="#cdcdcd" Margin="25,70,25,25" Padding="0">
+            <ListView Name="RequestList" ItemsSource="{Binding Requests}" SelectedItem="{Binding SelectedRequest}" BorderBrush="#cdcdcd" Margin="25,70,25,25" Padding="0">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding Description}" Header="Описание проблемы"/>

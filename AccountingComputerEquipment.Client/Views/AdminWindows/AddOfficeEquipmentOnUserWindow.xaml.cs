@@ -1,17 +1,28 @@
-﻿using System.Windows;
+﻿using AccountingComputerEquipment.Client.Models;
+using AccountingComputerEquipment.Client.ViewModels.AdminViewModels;
+using System.Windows;
 
 namespace AccountingComputerEquipment.Client.Views.AdminWindows
 {
-    /// <summary>
-    /// Логика взаимодействия для AddOfficeEqupmentOnUserDialogWindow.xaml
-    /// Это модальное окно должно открываться при взаимодействии как у окна сотрудников, так и у запросов
-    /// универсальное для двух пон пон
-    /// </summary>
     public partial class AddOfficeEqupmentOnUserWindow : Window
     {
-        public AddOfficeEqupmentOnUserWindow()
+        public AddOfficeEqupmentOnUserWindow(User user, OfficeEquipment? officeEquipment = null)
         {
             InitializeComponent();
+            AddOfficeEqupmentOnUserViewModel equpmentOnUserViewModel = new(user, officeEquipment);
+            DataContext = equpmentOnUserViewModel;
+
+            LoadForm(officeEquipment);
+        }
+
+        private void LoadForm(OfficeEquipment? officeEquipment)
+        {
+            if (officeEquipment is null)
+                return;
+
+            officeEquipmentsBox.Visibility = Visibility.Hidden;
+            createButton.IsEnabled = false;
+            createButton.Opacity = 0.5;
         }
     }
 }

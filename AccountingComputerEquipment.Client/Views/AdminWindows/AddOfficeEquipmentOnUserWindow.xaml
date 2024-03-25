@@ -5,14 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AccountingComputerEquipment.Client.Views.AdminWindows"
         mc:Ignorable="d"
+        Name="addOEonUserWindow"
         Title="Запись техники сотруднику" Height="480" Width="600" FontSize="18" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
     
     <StackPanel Background="#F5F5F5" Orientation="Vertical">
         <Label Margin="25" HorizontalAlignment="Center" FontWeight="Bold">Форма запроса на привязку оргтехники</Label>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="520">
-            <ComboBox HorizontalAlignment="Left" Margin="0 10 25 10" Width="250" BorderThickness="2"/>
-            <Image HorizontalAlignment="Right" Width="50" Height="50"></Image>
+            <ComboBox ItemsSource="{Binding OfficeEquipments}" DisplayMemberPath="Name" HorizontalAlignment="Left"
+                      Margin="0 10 25 10" Width="250" BorderThickness="2" x:Name="officeEquipmentsBox" SelectedItem="{Binding SelectedOfficeEquipment}"/>
+            <Image Source="{Binding Photo}" HorizontalAlignment="Right" Width="50" Height="50"></Image>
         </StackPanel>
         
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
@@ -21,15 +23,17 @@
         </StackPanel>
         
         <StackPanel Orientation="Horizontal" Height="200" HorizontalAlignment="Center">
-            <TextBox HorizontalAlignment="Left" Padding="5" Height="170" Width="250" Margin="10 0 10 0" x:Name="textBoxOE"
-                     BorderThickness="3" BorderBrush="Black"  IsEnabled="False"></TextBox>
-            <TextBox HorizontalAlignment="Right" Padding="5" Height="170" Width="250" Margin="10 0 10 0" x:Name="textBoxUser"
-                     BorderThickness="3" BorderBrush="Green" IsEnabled="False"></TextBox>
+            <TextBox Text="{Binding DescriptionOfficeEquipment}" HorizontalAlignment="Left" Padding="5" Height="170" Width="250" Margin="10 0 10 0"
+                     x:Name="textBoxOE" BorderThickness="3" BorderBrush="Black"  IsEnabled="False"></TextBox>
+            <TextBox Text="{Binding DescriptionUser}" HorizontalAlignment="Right" Padding="5" Height="170" Width="250" Margin="10 0 10 0"
+                     x:Name="textBoxUser" BorderThickness="3" BorderBrush="Green" IsEnabled="False"></TextBox>
         </StackPanel>
         
         <StackPanel Orientation="Horizontal" Height="70" HorizontalAlignment="Center">
-            <Button HorizontalAlignment="Left" Padding="10" Height="50" Width="150" Margin="10 0 10 0">Отклонить</Button>
-            <Button HorizontalAlignment="Right" Padding="10" Height="50" Width="150" Margin="10 0 10 0">Создать</Button>
+            <Button HorizontalAlignment="Left" Padding="10" Height="50" Width="150" Margin="10 0 10 0"
+                    Command="{Binding ExitOnWindowCommand}" CommandParameter="{x:Reference Name = addOEonUserWindow}">Отклонить</Button>
+            <Button HorizontalAlignment="Right" Padding="10" Height="50" Width="150" Margin="10 0 10 0"
+                    Command="{Binding CreateOfficeEquipmentOnUserCommand}" CommandParameter="{x:Reference Name = addOEonUserWindow}" x:Name="createButton">Создать</Button>
         </StackPanel>
     </StackPanel>
 </Window>

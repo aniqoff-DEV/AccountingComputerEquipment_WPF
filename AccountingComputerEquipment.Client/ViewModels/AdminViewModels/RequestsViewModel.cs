@@ -12,6 +12,7 @@ namespace AccountingComputerEquipment.Client.ViewModels.AdminViewModels
     public class RequestsViewModel
     {
         public ObservableCollection<RequestModel> Requests { get; set; }
+        public RequestModel SelectedRequest { get; set; }
 
         public ICommand ShowEmployeesWindowCommand { get; set; }
         public ICommand ShowAccoutingOEWindowCommand { get; set; }
@@ -45,7 +46,16 @@ namespace AccountingComputerEquipment.Client.ViewModels.AdminViewModels
         {
             var employessWindow = obj as Window;
 
-            AddOfficeEqupmentOnUserWindow addOEonUserWindow = new();
+            if(SelectedRequest is null)
+            {
+                MessageBox.Show("Выберите запрос!");
+                return;
+            }
+
+            var currentUser = UserService.GetUserById(SelectedRequest.UserId);
+            var currentOfficeEquipment = OfficeEquipmentService.GetOfficeEquipmentById(SelectedRequest.OfficeEquipmentId);
+
+            AddOfficeEqupmentOnUserWindow addOEonUserWindow = new(currentUser!, currentOfficeEquipment);
             addOEonUserWindow.Owner = employessWindow;
             addOEonUserWindow.Show();
         }

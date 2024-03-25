@@ -17,6 +17,14 @@ namespace AccountingComputerEquipment.Client.Services
             }
         }
 
+        public static User? GetUserById(int userId)
+        {
+            using (IDbConnection db = new SQLiteConnection(LoadConnectionString()))
+            {
+                return db.Query<User>("SELECT * FROM User WHERE Id = @userId", new { userId }).FirstOrDefault();
+            }
+        }
+
         public static ObservableCollection<User> LoadEmployees()
         {
             using(IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
@@ -24,6 +32,16 @@ namespace AccountingComputerEquipment.Client.Services
                 var output = cnn.Query<User>("select * from User where AccessLevelId > 1", new DynamicParameters());
                 ObservableCollection<User> userCollection = new ObservableCollection<User>(output as List<User>);
                 return userCollection;
+            }
+        }
+
+        public static void AddOfficeEquipment(int officeEquipmentId, int userId)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Execute("INSERT INTO OfficeEquipmentOfUser (OfficeEquipmentId, UserId)" +
+                            " VALUES (@officeEquipmentId, @userId)",
+                            new { officeEquipmentId, userId });
             }
         }
 

@@ -17,7 +17,7 @@
                     Content="Вернуться" Width="Auto" VerticalContentAlignment="Center" Padding="15,0,15,0" Margin="25 20 25 0" 
                     VerticalAlignment="Top" HorizontalAlignment="Right" BorderThickness="1" BorderBrush="#E0E0E0"  />
 
-            <ListView Name="UserList" ItemsSource="{Binding Users}" BorderBrush="#cdcdcd" Margin="25,70,25,25" Padding="0">
+            <ListView Name="UserList" ItemsSource="{Binding Users}" BorderBrush="#cdcdcd" Margin="25,70,25,25" Padding="0" SelectedItem="{Binding SelectedUser}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding FullName}" Header="Имя"/>

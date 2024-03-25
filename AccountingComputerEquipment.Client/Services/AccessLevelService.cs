@@ -19,6 +19,15 @@ namespace AccountingComputerEquipment.Client.Services
             }
         }
 
+        public static AccessLevel? GetById(int accessLevelId)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                return cnn.Query<AccessLevel>("select * from AccessLevel WHERE Id = @accessLevelId", new { accessLevelId })
+                    .FirstOrDefault();
+            }
+        }
+
         private static string LoadConnectionString(string id = "Default")
         {
             return ConfigurationManager.ConnectionStrings[id].ConnectionString;

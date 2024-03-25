@@ -23,7 +23,7 @@ namespace AccountingComputerEquipment.Client.Services
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
                 var output = cnn.Query<RequestModel>(
-                    "SELECT r.Id, r.Description, oe.Name[OfficeEquipmentName], oe.Photo[OfficeEquipmentPhoto]," +
+                    "SELECT r.Id, r.UserId, r.OfficeEquipmentId, r.Description, oe.Name[OfficeEquipmentName], oe.Photo[OfficeEquipmentPhoto]," +
                     " u.FullName[UserFullName], u.JobTitle[UserJobTitle], u.Email[UserEmail], " +
                     "u.TelephoneNumber[UserTelephoneNumber], al.Name[UserAccessLevel] " +
                     "FROM Request r " +

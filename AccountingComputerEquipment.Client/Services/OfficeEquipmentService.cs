@@ -19,6 +19,18 @@ namespace AccountingComputerEquipment.Client.Services
             }
         }
 
+        public static ObservableCollection<OfficeEquipment> LoadOfficeEquipmentsByAccessLevelOnUser(int accessLevelId)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var output = cnn.Query<OfficeEquipment>("SELECT * FROM OfficeEquipment " +
+                    "WHERE NOT EXISTS (SELECT OfficeEquipmentId FROM OfficeEquipmentOfUser oeu WHERE OfficeEquipment.Id = oeu.OfficeEquipmentId) " +
+                    "AND AccessLevelId <= @accessLevelId", new { accessLevelId });
+                ObservableCollection<OfficeEquipment> officeEquipmentCollection = new ObservableCollection<OfficeEquipment>(output as List<OfficeEquipment>);
+                return officeEquipmentCollection;
+            }
+        }
+
         public static ObservableCollection<OfficeEquipment> LoadCurrentOfficeEquipments(int userId)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
