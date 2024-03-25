@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AccountingComputerEquipment.Client.Views.AdminWindows"
         mc:Ignorable="d"
         Name="requestsWindow"
-        Title="Просмотр запросов от сотрудников" MinHeight="450" MinWidth="800" FontSize="18" WindowStartupLocation="CenterScreen">
+        Title="Просмотр запросов от сотрудников" MinHeight="450" MinWidth="800" FontSize="18" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     
     <Grid Background="#F5F5F5">
         <Grid Background="White" Margin="25,20,25,15">
